@@ -6,9 +6,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - backend
     volumes:
       - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /data/caddy/site:/srv
       - /data/caddy/data:/data
       - /data/caddy/config:/config
 
+networks:
+  backend:
+    external: true
