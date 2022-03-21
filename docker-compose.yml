@@ -12,6 +12,8 @@ services:
         published: 443
         mode: host
         protocol: tcp
+    networks:
+      - backend
     volumes:
       - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /data/caddy/site:/srv
@@ -23,3 +25,7 @@ services:
       placement:
         constraints:
           - node.role == manager
+
+networks:
+  backend:
+    external: true
