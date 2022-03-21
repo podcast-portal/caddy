@@ -19,6 +19,12 @@ services:
       - /data/caddy/site:/srv
       - /data/caddy/data:/data
       - /data/caddy/config:/config
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
 
 networks:
   backend:
